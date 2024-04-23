@@ -2,6 +2,8 @@
 
 The Logisim-implemented circuit embodies vital components intricately linked to craft a robust 32-bits processor architecture. These components collaboratively facilitate instruction execution. Leveraging pipeline circuits, instructions are segmented, enhancing code performance by segregating each operation's execution phase.
 
+<img src="/preview.png" height="500" alt="Preview"  />
+
 ## How to code:
 
 ### OPCODES:
