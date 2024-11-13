@@ -11,7 +11,8 @@ opcodes = {
     "LW": "1010", 
     "JUMP": "1011",
     "IF EQUAL": "1100",
-    "IF LEQ": "1101"
+    "IF LEQ": "1101",
+    "STOP": "1111"
 }
 def save_instructions_to_file(filename, instructions):
     hex_instructions = process_instructions_to_hex(instructions)
@@ -27,6 +28,9 @@ def instruction_to_bin(instruction):
     parts = instruction.split()
     instr = parts[0]  # Nome da instrução
 
+    if instr == "STOP": 
+        return f"{opcodes[instr]} {'0000'} {'0000'} {'0000'} {'0' * 16}"
+
     if instr == "LI": 
         reg_bin = reg_to_bin(parts[1])
         imm_value = int(parts[2])
@@ -36,7 +40,7 @@ def instruction_to_bin(instruction):
     elif instr == "SW" or instr == "LW":  # Para SW e LW
         reg_x_bin = reg_to_bin(parts[1])
         reg_y_bin = reg_to_bin(parts[2])
-        return f"{opcodes[instr]} {reg_x_bin} {reg_y_bin} {'0000'} {'0' * 16}"
+        return f"{opcodes[instr]} {reg_x_bin} {'0000'} {reg_y_bin}  {'0' * 16}"
     
     elif instr == "JUMP":  # Para JUMP
         reg_d_bin = reg_to_bin(parts[1])
@@ -84,5 +88,6 @@ instructions = read_instructions_from_file()
 binary_instructions = process_instructions(instructions)
 for bin_instr in binary_instructions:
     print(bin_instr)
-
-save_instructions_to_file('instructions.txt', instructions)
+    
+filename = input("Digite o nome do arquivo para salvar (ex: instructions.txt): ")
+save_instructions_to_file(filename, instructions)
