@@ -80,7 +80,12 @@ def process_instructions_to_hex(instructions):
 
 def read_instructions_from_file():
     with open("code.txt", 'r') as file:
-        instructions = [line.strip() for line in file.readlines()]
+        instructions = []
+        for line in file.readlines():
+            line = line.strip()  # Remove espaços em branco das extremidades
+            # Ignorar linhas vazias e comentários
+            if line and not line.startswith("//"):
+                instructions.append(line)
     return instructions
 
 instructions = read_instructions_from_file()

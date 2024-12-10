@@ -1,0 +1,27 @@
+//Valores para guardar
+LI R1 1        
+LI R2 2        
+LI R3 3
+LI R4 4
+LI R5 5
+LI R6 6
+//Endereços para salvar
+LI R7 0        
+LI R8 1        
+LI R9 2
+LI R10 3
+LI R11 4
+LI R12 5
+SW R7 R1
+SW R8 R2
+SW R9 R3
+SW R10 R4
+SW R11 R5
+SW R12 R6
+LW R7 R0
+LW R8 R0
+LW R9 R0
+LW R10 R0
+LW R11 R0
+LW R12 R0
+STOP
